@@ -3,7 +3,6 @@
   "version": "2.0.0",
   "description": "",
   "homepage": "https://Bad-Raider.github.io/goit-js-hw-10",
-  
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /goit-js-hw-10/"
@@ -19,6 +18,8 @@
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "dependencies": {
+    "handlebars": "^4.7.7",
+    "lodash.debounce": "^4.0.8",
     "modern-normalize": "^1.1.0"
   },
   "devDependencies": {

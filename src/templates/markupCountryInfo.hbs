@@ -7,7 +7,9 @@
         <p><b>Population: </b>{{population}}</p>
     </li>
     <li class="country-info__item">
-        <p><b>Languages: </b>{{languages}}</p>
+        {{#each languages}}
+        <p><b>Languages: </b>{{this}}</p>
+        {{/each}}
     </li>
 </ul>
 {{/each}}

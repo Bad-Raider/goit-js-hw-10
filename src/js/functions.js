@@ -26,4 +26,4 @@ function creatorMarkup(countyObj) {
 
 };
 
-export { deleteMarkup, alertInfo, alertWrong, creatorFullMarkup, creatorMarkup };
+// export { deleteMarkup, alertInfo, alertWrong, creatorFullMarkup, creatorMarkup };

@@ -2,8 +2,10 @@ import './css/styles.css';
 import debounce from 'lodash.debounce';
 import Notiflix from 'notiflix';
 import fetchCountries from './js/fetchCountries';
+// import { deleteMarkup, alertInfo, alertWrong, creatorFullMarkup, creatorMarkup } from './js/functions';
 import markupCountryList from './templates/markupCountryList.hbs';
 import markupCountryInfo from './templates/markupCountryInfo.hbs';
+
 
 
 const DEBOUNCE_DELAY = 300;
@@ -18,27 +20,28 @@ refs.inputEl.addEventListener("input", debounce(handleInputValue, DEBOUNCE_DELAY
 // handler
 function handleInputValue(e) {
   const nameCountry = e.target.value.trim();
+
+  if (nameCountry === "") {
+   return deleteMarkup();
+  };
+
   fetchCountries(nameCountry)
     .then(countyObj => {
 
       deleteMarkup();
 
       if (countyObj.length === 1) {
-        refs.countryListEl.insertAdjacentHTML("beforeend", markupCountryList(countyObj));
-        refs.contryInfoEl.insertAdjacentHTML("beforeend", markupCountryInfo(countyObj));
-
+        creatorFullMarkup(countyObj)
       }
-
       else if (countyObj.length > 10) {
         alertInfo();        
       }
-        
       else {
-        refs.countryListEl.insertAdjacentHTML("beforeend", markupCountryList(countyObj));
+        creatorMarkup(countyObj);
       }
     })
     .catch(alertWrong)
-}
+};
 
 
 function deleteMarkup() {
@@ -52,4 +55,14 @@ function alertInfo() {
 
 function alertWrong() {
   Notiflix.Notify.failure("Oops, there is no country with that name.")
-}
+};
+
+function creatorFullMarkup(countyObj) {
+  refs.countryListEl.insertAdjacentHTML("beforeend", markupCountryList(countyObj));
+        refs.contryInfoEl.insertAdjacentHTML("beforeend", markupCountryInfo(countyObj));
+};
+
+function creatorMarkup(countyObj) {
+          refs.countryListEl.insertAdjacentHTML("beforeend", markupCountryList(countyObj));
+
+};

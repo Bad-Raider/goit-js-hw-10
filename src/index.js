@@ -40,7 +40,10 @@ function handleInputValue(e) {
         creatorMarkup(countyObj);
       }
     })
-    .catch(alertWrong)
+    .catch(() => {
+      alertWrong();
+      deleteMarkup();
+    })
 };
 
 
